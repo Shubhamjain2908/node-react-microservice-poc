@@ -23,7 +23,6 @@ app.post('/posts', async (req, res) => {
     title
   };
 
-  // emitting an event to Event-bus
   await axios.post('http://localhost:4005/events', {
     type: 'PostCreated',
     data: {
@@ -36,7 +35,8 @@ app.post('/posts', async (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-  console.log('Event recieved: ', req.body.type);
+  console.log('Received Event', req.body.type);
+
   res.send({});
 });
 
