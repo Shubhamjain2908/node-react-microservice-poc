@@ -1,0 +1,20 @@
+{
+  "name": "node-react-microservice-poc",
+  "version": "1.0.0",
+  "description": "A POC for implementing different micro services in node.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "(cd client && npm i) & (cd ../comments && npm i) & (cd ../event-bus && npm i) & (cd ../moderation && npm i) & (cd ../posts && npm i) & (cd ../query && npm i)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubhamjain2908/node-react-microservice-poc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubhamjain2908/node-react-microservice-poc/issues"
+  },
+  "homepage": "https://github.com/Shubhamjain2908/node-react-microservice-poc#readme"
+}
