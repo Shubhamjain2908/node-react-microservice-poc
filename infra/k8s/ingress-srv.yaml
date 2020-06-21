@@ -4,12 +4,29 @@ metadata:
     name: ingress-srv
     annotations:    # helps ingress to understands that we are feeding some routing rules
         kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/use-regex: 'true'   # allow the use of regex: for path params
 spec:
     rules:  # routing rules (need to make a proxy on localhost as well...)
         - host: posts.com
           http:
             paths:
-                - path: /posts
+                - path: /posts/create
                   backend:
                     serviceName: posts-clusterip-srv
                     servicePort: 4000   # same PORT as service port
+                - path: /posts
+                  backend:
+                    serviceName: query-clusterip-srv
+                    servicePort: 4002
+                - path: /posts
+                  backend:
+                    serviceName: query-clusterip-srv
+                    servicePort: 4002
+                - path: /posts/?(.*)/comments
+                  backend:
+                    serviceName: comments-clusterip-srv
+                    servicePort: 4001
+                - path: / # /?(.*) if there is routing in the react app
+                  backend:
+                    serviceName: client-srv
+                    servicePort: 3000
