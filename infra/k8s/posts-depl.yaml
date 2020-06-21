@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: posts
+        app: posts  # ~ classname to htmls
     spec:
       containers:
         - name: posts
